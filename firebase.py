@@ -1,5 +1,6 @@
 import firebase_admin
 import json
+import os
 from firebase_admin import credentials, db
 
 firebase_key = json.loads(os.environ.get("FIREBASE_KEY"))
