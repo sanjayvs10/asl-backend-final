@@ -7,6 +7,10 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+@app.route("/")
+def home():
+    return "ASL Backend is running successfully!"
+
 # Add Player
 @app.route("/add-player", methods=["POST"])
 def add_player():
