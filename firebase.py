@@ -1,14 +1,16 @@
 import firebase_admin
 import json
 import os
-from firebase_admin import credentials, db
+from firebase_admin import credentials, db, firestore
 
 firebase_key = json.loads(os.environ.get("FIREBASE_KEY"))
 
-cred = credentials.Certificate("firebase_key.json")
+cred = credentials.Certificate("firebase_key")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://asl-auction-management-system-default-rtdb.firebaseio.com/'
 })
+
+db = firestore.client()
 
 players_ref = db.reference("players")
 teams_ref = db.reference("teams")
