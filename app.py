@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from firebase import players_ref, teams_ref, users_ref
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -197,8 +198,8 @@ def admin_teams():
 
     return jsonify(result)
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
 
-
-# 🚀 KEEP THIS ALWAYS AT BOTTOM
-app.run(debug=True)
